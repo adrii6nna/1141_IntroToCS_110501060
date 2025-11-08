@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lab1_Personal_Info</title>
+  <style>
+    :root { --border:#999; --gap:10px; --cell-pad:8px; }
+    body { font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; background:#fafafa; }
+    h1 { text-align:center; margin: 24px 0 10px; }
+    .wrap { max-width: 900px; margin: 0 auto 40px; }
+    table { width:100%; border-collapse: collapse; border: 3px double var(--border); background:#fff; }
+    th, td { border: 1px solid var(--border); padding: var(--cell-pad); vertical-align: middle; }
+    th { background:#f7f7f7; font-weight:600; }
+    .center { text-align:center; }
+    .header { font-weight:700; padding:12px; }
+    .photo-cell { width:220px; text-align:center; }
+    .photo { display:block; width:180px; aspect-ratio: 4 / 3; object-fit: cover; margin: 0 auto 6px; border:1px solid var(--border); }
+    .row { display:flex; gap:var(--gap); align-items:center; flex-wrap:wrap; }
+    .row label { white-space:nowrap; margin-right:6px; }
+    input[type="text"], input[type="email"], input[type="date"], select, textarea {
+      padding:6px 8px; border:1px solid var(--border); border-radius:4px; width: clamp(220px, 60%, 480px);
+    }
+    textarea { width: clamp(260px, 70%, 640px); height:110px; resize: vertical; }
+    .checkboxes, .radios { display:flex; gap:18px; flex-wrap:wrap; }
+    .btns { display:flex; gap:10px; justify-content:flex-start; padding:10px 0; }
+    .btns button { padding:8px 20px; border:1px solid var(--border); background:#fff; border-radius:6px; cursor:pointer; }
+    .btns button:hover { background:#f2f2f2; }
+    .btns button[type="submit"] {
+      background-color:#7188B4;
+      color:#fff;
+      border:none;
+    }
+    .btns button[type="submit"]:hover {
+      background-color:#5f7396;
+    }
+    .btns button[type="reset"]:hover {
+      background-color:#f2f2f2;
+    }
+    .note { color:#666; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Today's Lab</h1>
+
+    <form action="#" method="get">
+      <table aria-label="Personal Information Table">
+        <tr>
+          <th class="center header" colspan="3">About -- 110501060</th>
+        </tr>
+
+    
+        <tr>
+          <td class="photo-cell" rowspan="3">
+            <img class="photo" src="photo.jpg" alt="personal photo" />
+            <div class="note">personal photo</div>
+          </td>
+
+          <td>
+            <div class="row">
+              <label for="name"><strong>Name:</strong></label>
+              <input type="text" id="name" name="name" />
+            </div>
+            <div class="row" style="margin-top:8px">
+              <span><strong>Gender:</strong></span>
+              <div class="radios" role="radiogroup" aria-label="Gender">
+                <label><input type="radio" name="gender" value="male" /> Male</label>
+                <label><input type="radio" name="gender" value="female" /> Female</label>
+                <label><input type="radio" name="gender" value="other" /> Other</label>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:320px"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row">
+              <label for="county"><strong>County:</strong></label>
+              <select id="county" name="county">
+                <option>Taipei</option>
+                <option>Tainan</option>
+                <option>Taichung</option>
+                <option>Taoyuan</option>
+              </select>
+            </div>
+          </td>
+
+          <td>
+            <div class="row" style="white-space:nowrap;">
+              <label for="birthday"><strong>Birthday:</strong></label>
+              <input type="date" id="birthday" name="birthday" />
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <div class="row">
+              <label for="email"><strong>E-mail:</strong></label>
+              <input type="email" id="email" name="email" placeholder="name@example.com" />
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="center"><strong>Hobby</strong></td>
+          <td colspan="2">
+            <div class="checkboxes">
+              <label><input type="checkbox" name="hobby" value="swimming" /> Swimming</label>
+              <label><input type="checkbox" name="hobby" value="volleyball" /> Volleyball</label>
+              <label><input type="checkbox" name="hobby" value="movie" /> Movie</label>
+              <label><input type="checkbox" name="hobby" value="game" /> Game</label>
+              <label><input type="checkbox" name="hobby" value="sleep" /> sleep</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="center"><strong>Skill</strong></td>
+          <td colspan="2">
+            <div class="checkboxes">
+              <label><input type="checkbox" name="skill" value="Java" /> Java</label>
+              <label><input type="checkbox" name="skill" value="HTML" /> HTML</label>
+              <label><input type="checkbox" name="skill" value="Python" /> Python</label>
+              <label><input type="checkbox" name="skill" value="Microsoft Office" /> Microsoft Office</label>
+              <label><input type="checkbox" name="skill" value="premiere" /> Premiere</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="center"><strong>Say Something</strong></td>
+          <td colspan="2">
+            <textarea name="say" placeholder="Say something here."></textarea>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td colspan="3">
+            <div class="btns">
+              <button type="submit">提交</button>
+              <button type="reset">重設</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</body>
+</html>
