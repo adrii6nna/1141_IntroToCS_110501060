@@ -1,0 +1,107 @@
+/* Body attributes */
+body {
+    color: #000000;
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Heading element with font-family */
+.title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2.5em;
+    color: white;
+    background-color: #3498db;
+    padding: 20px;
+    margin: 0;
+}
+
+.subtext {
+    margin: 0;
+    padding: 2px 10px 40px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.2em;
+}
+
+/* Navbar */
+.navbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #2c3e50;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    position: relative;
+    top: 0em;
+    left: 0em;
+    width: 100%;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Dropdown menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2c3e50;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    width: 12em;
+}
+
+.dropdown-content {
+    text-align: left; 
+}
+
+.dropdown-content li a {
+    text-align: left;
+    padding-left: 15px;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.content {
+    text-align: left;
+    width: 60%;
+    margin: 20px; 
+}
+
+/* Media Types */
+@media all {
+    body {
+        font-size: 1em;
+    }
+}
+
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    .navbar, .subtext {
+        display: none;
+    }
+}
