@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>1A2B Game</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      margin-top: 40px;
+    }
+    #container {
+      width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    #guessInput {
+      width: 160px;
+      padding: 4px;
+      font-size: 16px;
+    }
+    #record {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 200px;
+    }
+    .line {
+      margin: 2px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>110501060_HW7_1A2B</h1>
+
+  <div id="container">
+    <p>Enter 4 unique numbers</p>
+    <input type="text" id="guessInput" maxlength="4" />
+    <button onclick="play()">Guess!</button>
+
+    <div id="record">
+      <strong>Game Record :</strong>
+    </div>
+  </div>
+
+  <script>
+    let answer = generateAnswer();
+    let count = 0;                
+
+
+    function generateAnswer() {
+      const digits = [];
+      for (let i = 0; i <= 9; i++) {
+        digits.push(i.toString());
+      }
+
+      const chosen = [];
+      while (chosen.length < 4) {
+        const idx = Math.floor(Math.random() * digits.length);
+        chosen.push(digits[idx]);
+        digits.splice(idx, 1); 
+      }
+      return chosen.join("");
+    }
+
+    function play() {
+      const inputField = document.getElementById("guessInput");
+      const guess = inputField.value.trim();
+
+      if (!isValid(guess)) {
+        return; 
+      }
+
+      count++; 
+
+      const result = checkAB(guess, answer);
+      const recordDiv = document.getElementById("record");
+      const line = document.createElement("div");
+      line.className = "line";
+      line.textContent = `第${count}次: ${guess} → ${result}`;
+      recordDiv.appendChild(line);
+
+      inputField.value = "";
+
+      if (result === "4A0B") {
+        alert(`恭喜你猜對了！\n答案是 ${answer}\n總共猜了 ${count} 次。`);
+        
+      }
+    }
+
+    function isValid(str) {
+      if (!/^\d{4}$/.test(str)) {
+        alert("輸入必須是正好 4 位數字！");
+        return false;
+      }
+
+      const set = new Set(str.split(""));
+      if (set.size !== 4) {
+        alert("4 個數字不能重複！");
+        return false;
+      }
+      return true;
+    }
+
+    function checkAB(guess, ans) {
+      let A = 0;
+      let B = 0;
+      for (let i = 0; i < 4; i++) {
+        if (guess[i] === ans[i]) {
+          A++;
+        } else if (ans.includes(guess[i])) {
+          B++;
+        }
+      }
+      return `${A}A${B}B`;
+    }
+  </script>
+</body>
+</html>
