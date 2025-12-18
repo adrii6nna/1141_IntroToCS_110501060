@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Guessing Game</title>
+  <style>
+    body { font-family: Arial, "Microsoft JhengHei", sans-serif; padding: 24px; }
+    #image img { max-width: 420px; height: auto; display: block; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>110501060 Guessing Game</h1>
+
+  <div id="image"></div>
+
+  <script>
+    (function () {
+      const MIN_START = 1;
+      const MAX_START = 100;
+      const MAX_ATTEMPTS = 7;
+
+      const imgDiv = document.getElementById("image");
+
+      function setImage(fileName, altText) {
+        imgDiv.innerHTML = `<img src="${fileName}" alt="${altText}">`;
+      }
+
+      function startGame() {
+        const answer = Math.floor(Math.random() * 100) + 1; // 1~100
+        let min = MIN_START;
+        let max = MAX_START;
+        let attemptsLeft = MAX_ATTEMPTS;
+
+        while (attemptsLeft > 0) {
+          const input = window.prompt(
+            `請輸入 ${min} 到 ${max} 之間的整數。\n你還有 ${attemptsLeft} 次機會。`
+          );
+
+          // 取消：直接結束（不扣次數）
+          if (input === null) return;
+
+          const trimmed = input.trim();
+
+          // 空值 or 非數字
+          if (trimmed === "" || isNaN(trimmed)) {
+            alert("輸入無效：請輸入數字！");
+            continue; // 不扣次數
+          }
+
+          const guess = Number(trimmed);
+
+          // 非整數
+          if (!Number.isInteger(guess)) {
+            alert("輸入無效：請輸入整數！");
+            continue; // 不扣次數
+          }
+
+          // 超出目前有效範圍
+          if (guess < min || guess > max) {
+            alert(`請輸入有效範圍內的數字（不能超出 ${min} 到 ${max}）！`);
+            continue; // 不扣次數
+          }
+
+          // 這次是有效猜測，扣次數
+          attemptsLeft--;
+
+          if (guess === answer) {
+            alert(`恭喜你答對了！正確答案是 ${answer}`);
+            setImage("images/correct.jpg", "correct");
+            return; // 結束遊戲
+          }
+
+          // 終極密碼規則：依「在上/在下」縮小範圍
+          if (guess > answer) {
+            max = guess;
+          } else {
+            min = guess;
+          }
+
+          // 次數用完
+          if (attemptsLeft === 0) {
+            alert(`很可惜，次數用完了！正確答案是 ${answer}`);
+            setImage("images/wrong.jpg", "wrong");
+            return; // 結束遊戲
+          }
+        }
+      }
+
+      // 開啟頁面就開始
+      startGame();
+    })();
+  </script>
+</body>
+</html>
