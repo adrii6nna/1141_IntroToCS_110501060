@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  padding: 28px;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px 0 22px;
+}
+
+.controls {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.controls input {
+  width: 160px;
+  padding: 8px 10px;
+  font-size: 16px;
+}
+
+.controls button {
+  padding: 8px 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background: #f3f3f3;
+  font-weight: 700;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 12px 10px;
+}
+
+tfoot th {
+  font-weight: 800;
+}

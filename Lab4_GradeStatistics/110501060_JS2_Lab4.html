@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade Statistics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>110501060_Grade Statistics</h1>
+
+  <div class="controls">
+    <input id="mathInput" type="number" placeholder="Math" />
+    <input id="englishInput" type="number" placeholder="English" />
+    <button id="submitBtn" type="button">Submit</button>
+  </div>
+
+  <table id="gradeTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Math</th>
+        <th>English</th>
+        <th>Average</th>
+      </tr>
+    </thead>
+
+    <tbody id="tableBody">
+      <!-- 新增的資料列會插在這裡 -->
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <th>Average</th>
+        <th id="mathAvg">0.00</th>
+        <th id="englishAvg">0.00</th>
+        <th id="overallAvg">0.00</th>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
