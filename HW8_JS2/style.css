@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  background: #f7f7f7;
+  text-align: center;
+  padding-top: 40px;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+.calculator {
+  background: #fff;
+  width: 300px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.calculator h2 {
+  margin-bottom: 20px;
+}
+
+.calculator label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.calculator input,
+.calculator select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: #8b5a2b;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #70451f;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
